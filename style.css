@@ -1,24 +1,86 @@
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #1c1c2b, #2f2f4f);
   color: #fff;
+  transition: 0.3s, color 0.3s;
 }
 
-/* صورة البروفايل */
+
+body.light-theme {
+  background: #f5f5f5;
+  color: #222;
+}
+body.light-theme .project-card,
+body.light-theme .contact-info,
+body.light-theme .contact-form {
+  background: #fff;
+  color: #111;
+}
+body.light-theme .profile-card {
+  background: rgba(255,255,255,0.9);
+  color: #000;
+}
+body.light-theme .nav-links li a {
+  color: #333;
+}
+body.light-theme .nav-links li a:hover {
+  color: #000;
+}
+
+
+#preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.contact-info a {
+  color: gold;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: white;
+}
+.loader {
+  border: 5px solid #fff;
+  border-top: 5px solid gold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+
 .profile-img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center top;
   border: 3px solid gold;
   margin-bottom: 1rem;
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: float 2s ease-in-out infinite;
 }
-
 .profile-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .hero {
@@ -36,12 +98,30 @@ body {
   padding: 2rem;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  animation: fadeInUp 1.2s ease-out;
 }
 
 .name {
   font-size: 2rem;
   color: gold;
   margin: 0;
+  animation: glowText 1s ease-in-out infinite alternate;
+}
+
+@keyframes glowText {
+  from { text-shadow: 0 0 5px gold, 0 0 10px gold; }
+  to { text-shadow: 0 0 15px white, 0 0 25px gold; }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .title {
@@ -49,30 +129,31 @@ body {
   color: #ccc;
 }
 
-/* أقسام المشاريع */
-.projects-section,
-.projects-section1 {
+
+.projects-section {
   padding: 3rem 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
-
 .project-card {
   background: #222244;
   border-radius: 12px;
   width: 400px;
   padding: 1rem;
   box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-  transition: transform 0.3s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: projectFloat 5s ease-in-out infinite;
 }
-
 .project-card:hover {
   transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
 }
-
-/* صور المشاريع */
+@keyframes projectFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
 .project-card img {
   width: 100%;
   height: 250px;
@@ -80,16 +161,15 @@ body {
   border-radius: 10px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .project-card h3 {
   color: #f2c94c;
   margin-top: 0.5rem;
 }
-
 .project-card p {
   font-size: 0.9rem;
   color: #ccc;
 }
+
 
 footer {
   text-align: center;
@@ -98,7 +178,8 @@ footer {
   color: #aaa;
   font-size: 0.9rem;
 }
-/* Navigation bar styling */
+
+
 .nav-links {
   list-style: none;
   padding: 20px;
@@ -106,18 +187,16 @@ footer {
   justify-content: center;
   gap: 1.5rem;
 }
-
 .nav-links li a {
   text-decoration: none;
   color: gold;
   font-weight: bold;
   transition: color 0.3s;
 }
-
 .nav-links li a:hover {
   color: #f2c94c;
 }
-/* === Contact Page Styling === */
+
 
 .contact-container {
   display: flex;
@@ -128,7 +207,6 @@ footer {
   background: linear-gradient(145deg, #0f2027, #203a43, #2c5364);
   color: #fff;
 }
-
 .contact-info,
 .contact-form {
   flex: 1 1 45%;
@@ -139,23 +217,19 @@ footer {
   backdrop-filter: blur(6px);
   transition: 0.3s ease;
 }
-
 .contact-info:hover,
 .contact-form:hover {
   transform: translateY(-5px);
 }
-
 .contact-info h2,
 .contact-form h2 {
   color: gold;
   margin-bottom: 1rem;
 }
-
 .contact-info p {
   margin-bottom: 0.8rem;
   font-size: 1.1rem;
 }
-
 .social-links a {
   display: inline-block;
   margin: 0.5rem 1rem 0 0;
@@ -164,26 +238,23 @@ footer {
   text-decoration: none;
   transition: 0.3s;
 }
-
 .social-links a:hover {
   color: white;
 }
-
 .contact-form form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
-
 .contact-form input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-form select {
   padding: 0.8rem 1rem;
   border-radius: 8px;
   border: none;
   outline: none;
   font-size: 1rem;
 }
-
 .contact-form button {
   background: gold;
   color: #111;
@@ -194,7 +265,6 @@ footer {
   cursor: pointer;
   transition: 0.3s;
 }
-
 .contact-form button:hover {
   background: #fff;
   color: #000;
