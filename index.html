@@ -5,20 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nouraldeen's Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+  <meta property="og:title" content="Nouraldeen's Portfolio">
+  <meta property="og:description" content="Creative Web Developer & Problem Solver">
+  <meta property="og:image" content="images/ho.jpg">
+  <meta property="og:url" content="https://yourdomain.com">
 </head>
 <body>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
   <header class="hero">
     <div class="container">
-      <div class="profile-card">
-        <img src="ho.jpg" alt="Your Photo" class="profile-img" />
+      <div class="profile-card" data-aos="fade-down">
+        <img src="images/ho.jpg" alt="Nouraldeen Photo" class="profile-img" />
         <h1 class="name">Nouraldeen</h1>
         <p class="title">Web Developer & Creative Coder</p>
       </div>
 
       <nav>
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-         
+          <li><a href="index.html" class="active">Home</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -26,35 +35,44 @@
   </header>
 
   <main class="projects-section">
-    <div class="project-card">
-      <img src="1.png" alt="Food Trading System">
+    <div class="project-card" data-aos="zoom-in">
+      <img src="images/1.png" alt="Food Trading System">
       <h3>Food Trading & Rental System</h3>
-      <p>A simple inventory system that helps users buy or rent food items. You can enter item name, quantity, and price, then track total cost in a clean table layout.</p>
+      <p>HTML, JS, Inventory System – A system to buy or rent food items with price tracking.</p>
     </div>
 
-    <div class="project-card">
-      <img src="4.png" alt="Football Player Market">
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+      <img src="images/4.png" alt="Football Player Market">
       <h3>Football Player Marketplace</h3>
-      <p>A fun platform where football players can list themselves for sale based on their position, age, and price. Includes filtering and dark/light mode switching.</p>
+      <p>Filterable player list, light/dark mode, fun UI for football lovers.</p>
     </div>
 
-    <div class="project-card">
-      <img src="2.png" alt="">
+    <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+      <img src="images/2.png" alt="Project Image">
       <h3>Project Title</h3>
-      <p>Project description goes here.</p>
-    </div>
-
-    <div class="project-card">
-      <img src="3.png" alt="">
-      <h3>Project Title</h3>
-      <p>Project description goes here.</p>
+      <p>Coming soon – A project that challenges creativity and logic.</p>
     </div>
   </main>
 
   <footer>
     <p>© 2025 Nouraldeen. All rights reserved.</p>
+    <button id="backToTop" class="ttt">Back to Top</button>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+   
+
+    const backToTop = document.getElementById('backToTop');
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
