@@ -5,19 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact Me - Nouraldeen</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
 <body>
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
   <header class="hero">
     <div class="container">
-      <div class="profile-card">
-        <h1 class="name">Let's Talk!</h1>
-        <p class="title">Have a question, idea, or collaboration?</p>
+      <div class="profile-card" data-aos="fade-down">
+        <img src="images/ho.jpg" alt="Nouraldeen Photo" class="profile-img" />
+        <h1 class="name">Nouraldeen</h1>
+        <p class="title">Web Developer & Creative Coder</p>
       </div>
 
       <nav>
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
-          
           <li><a href="contact.html" class="active">Contact</a></li>
         </ul>
       </nav>
@@ -25,11 +31,11 @@
   </header>
 
   <main class="contact-container">
-    <div class="contact-info">
+    <div class="contact-info" data-aos="fade-right">
       <h2>Contact Info</h2>
-      <p><strong>Email:</strong> nor777916@gmail.com</p>
-      <p><strong>Phone:</strong> +967 776209463</p>
-      <p><strong>Location:</strong> I live in Yemen 🌍</p>
+      <p><strong>Email:</strong> <a href="mailto:nor777916@gmail.com">nor777916@gmail.com</a></p>
+      <p><strong>Phone:</strong> <a href="tel:+967776209463">+967 776 209 463</a></p>
+      <p><strong>Location:</strong> Yemen</p>
 
       <div class="social-links">
         <a href="https://t.me/@N_AN1q" target="_blank">Telegram</a>
@@ -38,19 +44,40 @@
       </div>
     </div>
 
-    <div class="contact-form">
+    <div class="contact-form" data-aos="fade-left">
       <h2>Send a Message</h2>
-      <form action="mailto:nor777916@gmail.com" method="POST" enctype="text/plain">
+      <form action="#" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
+        <select name="subject" required>
+          <option value="">Choose a Topic</option>
+          <option value="question">General Question</option>
+          <option value="project">Project Collaboration</option>
+          <option value="feedback">Feedback</option>
+        </select>
         <textarea name="message" rows="6" placeholder="Your Message..." required></textarea>
-        <button type="submit">Send</button>
+        <button type="submit">Send Message</button>
       </form>
     </div>
   </main>
 
   <footer>
     <p>© 2025 Nouraldeen. All rights reserved.</p>
+    <button id="backToTop">Back to Top</button>
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const backToTop = document.getElementById('backToTop');
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    window.addEventListener('load', () => {
+      document.getElementById('preloader').style.display = 'none';
+    });
+  </script>
 </body>
 </html>
